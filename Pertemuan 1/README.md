@@ -46,7 +46,9 @@ Shift Akhir : B
 
 1.6 Pertanyaan Praktikum
 1. Schematic 5 LED Running
+   
    <img width="413" height="529" alt="image" src="https://github.com/user-attachments/assets/ee0820a2-2642-4945-877f-19b1ff5a8cae" />
+   
 2. Bagaimana program membuat efek LED berjalan kiri ke kanan?
    Loop for pertama menjalankan ledPin dari 2 naik ke 7 (ledPin++). Setiap iterasi menyalakan satu pin dengan digitalWrite(ledPin, HIGH), menunggu timer ms, lalu mematikannya. Karena hanya satu LED menyala pada satu waktu dan urutannya naik, efek visualnya adalah cahaya berjalan dari kiri (pin 2) ke kanan (pin 7).
 3. Bagaimana program membuat LED kembali dari kanan ke kiri?
