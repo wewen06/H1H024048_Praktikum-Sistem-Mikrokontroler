@@ -12,37 +12,7 @@ Shift Akhir : B
    delay(timeDelay) berfungsi untuk menghentikan eksekusi program selama timeDelay milidetik. Digunakan dua kali dalam satu siklus: pertama saat LED menyala, kedua saat LED mati — sehingga lamanya LED ON dan OFF sama persis, dan bersama-sama menentukan kecepatan kedip.
 4. Jika program yang dibuat memiliki alur mati → lambat → cepat → reset (mati), ubah menjadi LED tidak langsung reset → tetapi berubah dari cepat → sedang → mati dan berikan penjelasan disetiap baris kode nya dalam bentuk README.md!
 
-   const int ledPin = 6; // LED ada di pin 6 pada Arduino 
-   int timeDelay = 1000; // jeda 1 detik
-
-   void setup() {
-     pinMode(ledPin, OUTPUT); // Mengatur pin LED sebagai output
-   }
-
-   void loop() {
-     // Nyalakan LED
-     digitalWrite(ledPin, HIGH);
-     delay(timeDelay); // LED menyala sesuai waktu delay
-
-     // Matikan LED
-     digitalWrite(ledPin, LOW); delay(timeDelay); // LED mati sesuai waktu delay
-
-     // Logika perubahan kecepatan
-     if (timeDelay <= 100) {
-       // Jika sudah sangat cepat
-       timeDelay = 500; // ubah ke kecepatan sedang
-     }
-     else if (timeDelay == 500) {
-       // Jika sudah kecepatan sedang
-       digitalWrite(ledPin, LOW); // pastikan LED mati
-       delay(3000); // jeda 3 detik (mati)
-       timeDelay = 1000; // kembali ke awal (lambat)
-     }
-     else {
-       // Jika masih dalam proses percepatan
-       timeDelay -= 100; // kurangi delay (lebih cepat)
-     }
-   }
+   <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/dcb13c83-5e3b-4e41-b611-41a7ce172404" />
 
 1.6 Pertanyaan Praktikum
 1. Schematic 5 LED Running
@@ -55,34 +25,7 @@ Shift Akhir : B
    Loop for kedua menjalankan ledPin dari 7 turun ke 2 (ledPin--). Dengan urutan terbalik, LED yang menyala berpindah dari pin 7 kembali ke pin 2 — sehingga efeknya adalah LED berjalan dari kanan ke kiri, menciptakan gerakan bolak-balik seperti efek Knight Rider.
 4. Buatkan program agar LED menyala tiga LED kanan dan tiga LED kiri secara bergantian dan berikan penjelasan disetiap baris kode nya dalam bentuk README.md!
 
-   int timer = 500; // waktu delay (semakin besar semakin lambat)
-
-   void setup() {
-     // inisialisasi pin 2 sampai 7 sebagai output
-     for (int ledPin = 2; ledPin < 8; ledPin++) {
-       pinMode(ledPin, OUTPUT); // set pin sebagai output
-     }
-   }
-
-   void loop() {
-     // nyalakan 3 led kiri
-     digitalWrite(2, HIGH); // LED kiri 1 nyala
-     digitalWrite(3, HIGH); // LED kiri 2 nyala
-     digitalWrite(4, HIGH); // LED kiri 3 nyala
-     digitalWrite(5, LOW); // LED kanan mati
-     digitalWrite(6, LOW);
-     digitalWrite(7, LOW);
-     delay(timer); // tunggu
-
-     // nyalakan 3 led kanan
-     digitalWrite(2, LOW); // LED kiri mati
-     digitalWrite(3, LOW);
-     digitalWrite(4, LOW);
-     digitalWrite(5, HIGH); // LED kanan 1 nyala
-     digitalWrite(6, HIGH); // LED kanan 2 nyala
-     digitalWrite(7, HIGH); // LED kanan 3 nyala
-     delay(timer); // tunggu
-   }
+   <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/2fe11f7c-388a-4ceb-a08f-63b263faca55" />
 
 1.7 Pertanyaan Analisis
 1. Uraian Hasil Setiap Percobaan
