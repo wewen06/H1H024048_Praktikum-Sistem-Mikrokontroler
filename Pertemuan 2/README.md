@@ -1,7 +1,7 @@
 Nama        : Wendy Virtus  
 NIM         : H1H024048  
 Shift Awal  : B  
-Shift Akhir : C  
+Shift Akhir : B  
 
 ---
 
