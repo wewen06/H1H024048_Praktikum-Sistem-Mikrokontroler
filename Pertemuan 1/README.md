@@ -1,39 +1,208 @@
-Nama        : Wendy Virtus
-NIM         : H1H024048
-Shift Awal  : B
-Shift Akhir : B
+Nama        : Wendy Virtus  
+NIM         : H1H024048  
+Shift Awal  : B  
+Shift Akhir : B  
 
-1.5 Pertanyaan Praktikum
-1. Pada kondisi apa program masuk ke blok if?
-   Program masuk ke blok if ketika nilai timeDelay <= 100. Artinya, setelah LED berkedip cukup cepat (delay sudah berkurang dari 1000ms hingga mencapai 100ms atau kurang), program akan masuk ke blok tersebut — menjalankan jeda 3 detik lalu mereset timeDelay kembali ke 1000.
-2. Pada kondisi apa program masuk ke blok else?
-   Program masuk ke blok else ketika timeDelay > 100. Selama kondisi itu terpenuhi, setiap akhir siklus kedip akan mengurangi timeDelay sebesar 100ms, sehingga LED semakin cepat berkedip dari waktu ke waktu.
-3. Apa fungsi dari perintah delay(timeDelay)?
-   delay(timeDelay) berfungsi untuk menghentikan eksekusi program selama timeDelay milidetik. Digunakan dua kali dalam satu siklus: pertama saat LED menyala, kedua saat LED mati — sehingga lamanya LED ON dan OFF sama persis, dan bersama-sama menentukan kecepatan kedip.
-4. Jika program yang dibuat memiliki alur mati → lambat → cepat → reset (mati), ubah menjadi LED tidak langsung reset → tetapi berubah dari cepat → sedang → mati dan berikan penjelasan disetiap baris kode nya dalam bentuk README.md!
+---
 
-   <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/dcb13c83-5e3b-4e41-b611-41a7ce172404" />
+## 1.5 Pertanyaan Praktikum
 
-1.6 Pertanyaan Praktikum
-1. Schematic 5 LED Running
-   
-   <img width="413" height="529" alt="image" src="https://github.com/user-attachments/assets/ee0820a2-2642-4945-877f-19b1ff5a8cae" />
-   
-2. Bagaimana program membuat efek LED berjalan kiri ke kanan?
-   Loop for pertama menjalankan ledPin dari 2 naik ke 7 (ledPin++). Setiap iterasi menyalakan satu pin dengan digitalWrite(ledPin, HIGH), menunggu timer ms, lalu mematikannya. Karena hanya satu LED menyala pada satu waktu dan urutannya naik, efek visualnya adalah cahaya berjalan dari kiri (pin 2) ke kanan (pin 7).
-3. Bagaimana program membuat LED kembali dari kanan ke kiri?
-   Loop for kedua menjalankan ledPin dari 7 turun ke 2 (ledPin--). Dengan urutan terbalik, LED yang menyala berpindah dari pin 7 kembali ke pin 2 — sehingga efeknya adalah LED berjalan dari kanan ke kiri, menciptakan gerakan bolak-balik seperti efek Knight Rider.
-4. Buatkan program agar LED menyala tiga LED kanan dan tiga LED kiri secara bergantian dan berikan penjelasan disetiap baris kode nya dalam bentuk README.md!
+### 1. Pada kondisi apa program masuk ke blok `if`?
+Program masuk ke blok `if` ketika nilai `timeDelay <= 100`.  
+Artinya, setelah LED berkedip cukup cepat (delay berkurang dari 1000 ms hingga mencapai 100 ms atau kurang), program akan menjalankan jeda 3 detik lalu mereset `timeDelay` kembali ke 1000.
 
-   <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/2fe11f7c-388a-4ceb-a08f-63b263faca55" />
+---
 
-1.7 Pertanyaan Analisis
-1. Uraian Hasil Setiap Percobaan
-   - Percobaan 1 — LED Blink dengan Percepatan Bertahap. Program menggunakan satu LED pada pin 6 dengan variabel timeDelay yang berkurang 100 ms setiap siklus melalui blok else, sehingga LED berkedip semakin cepat dari 1000 ms hingga 100 ms, lalu jeda 3 detik dan reset. Pada modifikasi, logika dibalik: timeDelay dimulai dari 100 ms dan bertambah 100 ms tiap siklus hingga mencapai 1000 ms, menghasilkan pola visual Cepat → Sedang → Mati → Reset.
-   - Percobaan 2 — LED Running. Program menggunakan 6 LED pada pin 2–7 yang diinisialisasi sekaligus dengan satu loop for. Dua loop berurutan — satu menaik, satu menurun — menciptakan efek titik cahaya berjalan maju mundur. Pada modifikasi, LED dibagi menjadi kelompok kiri (pin 2–4) dan kanan (pin 5–7) yang dinyalakan bergantian secara bersamaan per kelompok, menghasilkan efek dua blok cahaya yang bergantian menyala kiri dan kanan.
-2. Pengaruh Struktur Perulangan terhadap Jalannya Program
-   Struktur perulangan for dan while memungkinkan eksekusi instruksi berulang secara efisien tanpa menulis kode yang sama berkali-kali. Dalam praktikum ini, loop for mempersingkat inisialisasi enam pin menjadi tiga baris kode saja, sekaligus menentukan perilaku fisik LED melalui arah iterasinya — loop menaik menggerakkan LED ke kanan, loop menurun membaliknya ke kiri. Perbedaan mendasarnya, for dipakai saat jumlah iterasi sudah diketahui (rentang pin pasti), sedangkan while lebih tepat untuk kondisi yang berubah secara dinamis seperti pembacaan sensor. Secara keseluruhan, perulangan adalah mekanisme utama yang membuat program Arduino berjalan kontinu dan terstruktur.
-3. Cara Kerja Percabangan (if-else) dalam Menentukan Kondisi LED
-   Percabangan if-else bekerja sebagai pengambil keputusan dengan mengevaluasi kondisi boolean, lalu mengeksekusi salah satu dari dua blok kode sesuai hasilnya. Dalam praktikum ini, if (timeDelay <= 100) dievaluasi setiap akhir siklus kedip — jika terpenuhi, program mereset timeDelay; jika tidak, program menguranginya 100 ms. Penempatannya setelah siklus selesai memastikan tidak ada kedip yang terpotong di tengah jalan. Secara umum, if-else menjadi jembatan antara data masukan (nilai variabel atau sensor) dan aksi keluaran (nyala/mati LED), sehingga Arduino dapat merespons kondisi yang berbeda dengan perilaku yang berbeda pula.
-4. Kombinasi Perulangan dan Percabangan untuk Sistem yang Responsif
-   Perulangan dan percabangan saling melengkapi dalam membangun sistem Arduino yang responsif: perulangan menjamin program terus memantau kondisi secara kontinu, sementara percabangan memastikan reaksi yang tepat saat kondisi berubah. Dalam praktikum ini kombinasi keduanya sudah terlihat — loop for mengurus eksekusi LED secara berurutan, sementara if-else mengelola logika perubahan kecepatan. Pada sistem yang lebih kompleks seperti lampu otomatis berbasis LDR atau alarm suhu, pola yang sama diterapkan: loop membaca nilai sensor secara periodik, if-else memutuskan aksi berdasarkan nilai tersebut. Agar sistem benar-benar responsif, penggunaan millis() lebih disarankan daripada delay(), karena delay() memblokir pembacaan input selama jeda berlangsung, sedangkan millis() memungkinkan program memantau kondisi dan mengelola waktu secara bersamaan tanpa jeda paksa.
+### 2. Pada kondisi apa program masuk ke blok `else`?
+Program masuk ke blok `else` ketika `timeDelay > 100`.  
+Selama kondisi ini terpenuhi, setiap akhir siklus kedip akan mengurangi `timeDelay` sebesar 100 ms, sehingga LED semakin cepat berkedip.
+
+---
+
+### 3. Apa fungsi dari perintah `delay(timeDelay)`?
+`delay(timeDelay)` berfungsi untuk menghentikan eksekusi program selama `timeDelay` milidetik.
+
+Digunakan dua kali dalam satu siklus:
+- Saat LED menyala  
+- Saat LED mati  
+
+Sehingga durasi ON dan OFF sama, dan menentukan kecepatan kedip.
+
+---
+
+### 4. Modifikasi Program
+LED tidak langsung reset, tetapi berubah dari **cepat → sedang → mati**
+```cpp
+const int ledPin = 6; 
+int timeDelay = 100;   // mulai dari cepat
+
+void setup() { 
+  pinMode(ledPin, OUTPUT); 
+} 
+
+void loop() { 
+  // Nyalakan LED
+  digitalWrite(ledPin, HIGH); 
+  delay(timeDelay); 
+
+  // Matikan LED
+  digitalWrite(ledPin, LOW); 
+  delay(timeDelay); 
+
+  // Perubahan delay: dari cepat → sedang → lambat
+  if (timeDelay >= 1000) { 
+    // Kondisi mati (berhenti sejenak)
+    delay(3000);        
+    timeDelay = 100;    // kembali ke cepat
+  } else { 
+    timeDelay += 100;   // perlambatan bertahap
+  } 
+}
+```
+
+---
+
+## 1.6 Pertanyaan Praktikum
+
+### 1. Schematic 5 LED Running
+<img width="728" height="562" alt="image" src="https://github.com/user-attachments/assets/4a590b60-d295-415c-93f1-95bcb13c621e" />
+
+---
+
+### 2. Bagaimana program membuat efek LED berjalan kiri ke kanan?
+Loop `for` pertama menjalankan `ledPin` dari 2 hingga 7 (`ledPin++`).
+
+Setiap iterasi:
+- Menyalakan LED (`HIGH`)  
+- Menunggu beberapa ms  
+- Mematikan LED  
+
+Karena urutannya naik, efeknya LED bergerak dari kiri ke kanan.
+
+---
+
+### 3. Bagaimana program membuat LED kembali dari kanan ke kiri?
+Loop `for` kedua menjalankan `ledPin` dari 7 ke 2 (`ledPin--`).
+
+Urutan terbalik ini membuat LED bergerak dari kanan ke kiri, menghasilkan efek bolak-balik seperti **Knight Rider**.
+
+---
+
+### 4. Modifikasi Program
+LED menyala tiga di kanan dan tiga di kiri secara bergantian
+```cpp
+// Variabel untuk mengatur kecepatan kedip (dalam milidetik)
+// Semakin besar nilainya, semakin lambat pergantian LED
+int timer = 500;
+
+void setup() {
+  // Gunakan loop for untuk menginisialisasi semua pin 2 sampai 7 sebagai OUTPUT
+  // OUTPUT berarti Arduino akan mengirim tegangan (menyalakan/mematikan LED)
+  for (int ledPin = 2; ledPin <= 7; ledPin++) {
+    pinMode(ledPin, OUTPUT);
+  }
+}
+
+void loop() {
+
+  // ════════════════════════════════════════
+  // FASE 1: Nyalakan LED KIRI (pin 2, 3, 4)
+  // ════════════════════════════════════════
+
+  // Loop untuk menyalakan tiga LED di sisi kiri (pin 2 sampai 4)
+  for (int ledPin = 2; ledPin <= 4; ledPin++) {
+    // Kirim sinyal HIGH (5V) ke pin → LED menyala
+    digitalWrite(ledPin, HIGH);
+  }
+
+  // Pastikan LED kanan (pin 5, 6, 7) dalam kondisi mati
+  // agar tidak ada tumpang tindih saat fase pergantian
+  for (int ledPin = 5; ledPin <= 7; ledPin++) {
+    // Kirim sinyal LOW (0V) ke pin → LED mati
+    digitalWrite(ledPin, LOW);
+  }
+
+  // Tahan kondisi ini selama 'timer' milidetik
+  // LED kiri menyala, LED kanan mati, selama durasi ini
+  delay(timer);
+
+  // ════════════════════════════════════════
+  // FASE 2: Nyalakan LED KANAN (pin 5, 6, 7)
+  // ════════════════════════════════════════
+
+  // Loop untuk menyalakan tiga LED di sisi kanan (pin 5 sampai 7)
+  for (int ledPin = 5; ledPin <= 7; ledPin++) {
+    // Kirim sinyal HIGH (5V) ke pin → LED menyala
+    digitalWrite(ledPin, HIGH);
+  }
+
+  // Matikan LED kiri (pin 2, 3, 4) agar tidak menyala bersamaan
+  for (int ledPin = 2; ledPin <= 4; ledPin++) {
+    // Kirim sinyal LOW (0V) ke pin → LED mati
+    digitalWrite(ledPin, LOW);
+  }
+
+  // Tahan kondisi ini selama 'timer' milidetik
+  // LED kanan menyala, LED kiri mati, selama durasi ini
+  delay(timer);
+
+  // Setelah delay selesai, loop() akan dipanggil ulang otomatis oleh Arduino
+  // → kembali ke FASE 1 → efek bergantian berjalan terus-menerus
+}
+```
+---
+
+## 1.7 Pertanyaan Analisis
+
+### 1. Uraian Hasil Setiap Percobaan
+- **Percobaan 1 — LED Blink dengan Percepatan Bertahap**  
+  Program menggunakan satu LED pada pin 6 dengan variabel `timeDelay` yang berkurang 100 ms setiap siklus, sehingga LED berkedip semakin cepat dari 1000 ms hingga 100 ms, lalu reset.  
+  Pada modifikasi, `timeDelay` dimulai dari 100 ms dan bertambah hingga 1000 ms, menghasilkan pola **cepat → sedang → mati → reset**.
+
+- **Percobaan 2 — LED Running**  
+  Program menggunakan 6 LED pada pin 2–7 dengan dua loop (`naik` dan `turun`) sehingga LED bergerak bolak-balik.  
+  Pada modifikasi, LED dibagi menjadi dua kelompok:
+  - Kiri (pin 2–4)  
+  - Kanan (pin 5–7)  
+  Menyala secara bergantian.
+
+---
+
+### 2. Pengaruh Struktur Perulangan terhadap Jalannya Program
+Struktur perulangan (`for` dan `while`) memungkinkan eksekusi berulang secara efisien.
+
+- `for` digunakan saat jumlah iterasi sudah pasti (misalnya pin 2–7)  
+- `while` digunakan untuk kondisi dinamis  
+
+Loop juga menentukan arah gerakan LED:
+- Naik → kiri ke kanan  
+- Turun → kanan ke kiri  
+
+---
+
+### 3. Cara Kerja Percabangan (`if-else`)
+Percabangan digunakan untuk mengambil keputusan berdasarkan kondisi.
+
+Contoh:
+- `if (timeDelay <= 100)` → reset delay  
+- `else` → kurangi delay  
+
+Struktur ini memastikan LED tidak terputus di tengah siklus dan tetap berjalan sesuai logika.
+
+---
+
+### 4. Kombinasi Perulangan dan Percabangan
+Perulangan dan percabangan saling melengkapi:
+
+- **Loop** → menjalankan program terus-menerus  
+- **If-else** → menentukan aksi berdasarkan kondisi  
+
+Dalam praktikum:
+- Loop mengatur urutan LED  
+- If-else mengatur perubahan kecepatan  
+
+Untuk sistem yang lebih responsif, disarankan menggunakan `millis()` daripada `delay()`, karena:
+- `delay()` bersifat blocking  
+- `millis()` memungkinkan multitasking (membaca input sambil berjalan)
+
+---
